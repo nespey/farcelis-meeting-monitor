@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "https://honest-cuts-infants-starting.trycloudflare.com/$1"
+      "dest": "https://although-scanning-reflections-wellness.trycloudflare.com/$1"
     }
   ]
 }

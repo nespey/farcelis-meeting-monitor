@@ -68,6 +68,8 @@ export async function handleRequest(req, res) {
   }
 }
 
+export default handleRequest;
+
 if (!IS_VERCEL && process.argv[1] === fileURLToPath(import.meta.url)) {
   const server = http.createServer(handleRequest);
   server.listen(PORT, () => {

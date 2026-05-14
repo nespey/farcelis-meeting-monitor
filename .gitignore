@@ -26,3 +26,4 @@ vendor/
 *.wav
 *.webm
 *.m4a
+.vercel

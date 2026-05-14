@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "https://transmission-designing-interior-delayed.trycloudflare.com/$1"
+      "dest": "https://honest-cuts-infants-starting.trycloudflare.com/$1"
     }
   ]
 }

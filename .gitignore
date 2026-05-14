@@ -4,6 +4,7 @@
 !.env.example
 node_modules/
 .vercel/
+.local-bin/
 
 data/
 !data/.gitkeep

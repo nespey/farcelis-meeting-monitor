@@ -2,6 +2,7 @@
 .env.*
 .git/
 .vercel/
+.local-bin/
 data/
 native/*.app/
 native/AudioClipper

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farcelis Meeting Monitor</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Farcelis Control Layer</p>
+        <h1>Meeting Monitor</h1>
+      </div>
+      <div id="api-status" class="status-pill">Checking API</div>
+    </header>
+
+    <section class="workspace">
+      <aside class="setup-panel">
+        <form id="meeting-form" class="panel">
+          <div class="panel-heading">
+            <h2>Session</h2>
+            <span id="recording-timer">00:00</span>
+          </div>
+
+          <div class="preset-row">
+            <button id="k2-preset-button" type="button">K2 Project Dev</button>
+            <button id="clear-preset-button" type="button">Blank</button>
+          </div>
+
+          <label>
+            Meeting title
+            <input id="title" name="title" value="Soltaic Follow-up Call" autocomplete="off">
+          </label>
+
+          <label>
+            Client / company
+            <input id="client" name="client" value="Soltaic" autocomplete="off">
+          </label>
+
+          <label>
+            Attendees
+            <input id="attendees" name="attendees" value="Chris, interim integrator" autocomplete="off">
+          </label>
+
+          <label>
+            Platform
+            <select id="platform" name="platform">
+              <option>Independent</option>
+              <option>Zoom</option>
+              <option>Teams</option>
+              <option>Google Meet</option>
+              <option>Phone</option>
+              <option>In person</option>
+            </select>
+          </label>
+
+          <label>
+            Prep notes
+            <textarea id="notes" name="notes" rows="5">Integrator / EOS follow-up. Focus on source of truth, operating rhythm, CRM, scorecard, project handoffs, and first 30 days.</textarea>
+          </label>
+
+          <label class="consent-row">
+            <input id="consent" name="consent" type="checkbox">
+            I have consent to record/transcribe this meeting.
+          </label>
+
+          <div class="button-grid">
+            <button id="prep-button" type="button">Prep Mode</button>
+            <button id="calendar-button" type="button">Calendar Match</button>
+            <button id="start-button" type="submit" class="primary">Start</button>
+            <button id="stop-button" type="button" disabled>Stop</button>
+          </div>
+          <div id="native-status" class="native-status">System audio recorder idle.</div>
+        </form>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>Meetings</h2>
+            <button id="refresh-meetings" type="button">Refresh</button>
+          </div>
+          <div id="meeting-list" class="meeting-list"></div>
+        </section>
+      </aside>
+
+      <section class="main-panel">
+        <nav class="tabs" aria-label="Meeting monitor tabs">
+          <button class="active" data-tab="recording">Recording</button>
+          <button data-tab="prep">Prep</button>
+          <button data-tab="transcript">Transcript</button>
+          <button data-tab="brief">Brief</button>
+          <button data-tab="files">Files</button>
+        </nav>
+
+        <section id="recording-tab" class="tab-panel active">
+          <div class="live-header">
+            <div>
+              <h2>Recording</h2>
+              <p>Local mode records native macOS meeting audio. Cloud mode records browser microphone audio. Transcription runs after Stop.</p>
+            </div>
+            <button id="finalize-button" type="button" disabled>Finalize Transcript</button>
+          </div>
+          <div id="recording-output" class="transcript-surface">
+            <div class="empty-state">Start a meeting to record both sides. After the call, press Stop, then Finalize Transcript.</div>
+          </div>
+        </section>
+
+        <section id="prep-tab" class="tab-panel">
+          <h2>Prep Mode</h2>
+          <pre id="prep-output" class="document-surface">Prep mode pulls from local client folders and data/inbox.</pre>
+        </section>
+
+        <section id="transcript-tab" class="tab-panel">
+          <div class="section-heading">
+            <h2>Transcript</h2>
+            <div class="segmented-control" aria-label="Transcript view">
+              <button id="clean-transcript-button" class="active" type="button">Clean</button>
+              <button id="raw-transcript-button" type="button">Raw</button>
+            </div>
+            <button id="reconcile-speakers-button" type="button">Re-run Speaker Match</button>
+            <button id="next-review-button" type="button" disabled>Review: 0</button>
+          </div>
+          <div id="transcript-output" class="document-surface transcript-clean">Finalize a meeting to create the transcript.</div>
+        </section>
+
+        <section id="brief-tab" class="tab-panel">
+          <h2>Meeting Brief</h2>
+          <pre id="brief-output" class="document-surface">Finalize a meeting to generate the brief.</pre>
+        </section>
+
+        <section id="files-tab" class="tab-panel">
+          <h2>Local Files</h2>
+          <div id="file-output" class="file-surface"></div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <div id="speaker-popover" class="speaker-popover" hidden>
+    <label>
+      Saved speaker
+      <select id="speaker-select"></select>
+    </label>
+    <label>
+      Speaker name
+      <input id="speaker-name-input" type="text" placeholder="Type a speaker name">
+    </label>
+    <div class="speaker-popover-actions">
+      <button id="speaker-save-button" class="primary" type="button">Save</button>
+      <button id="speaker-clear-button" type="button">Clear</button>
+      <button id="speaker-cancel-button" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

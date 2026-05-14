@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>io.farcelis.meeting-monitor.mac-speech-transcriber</string>
+	<key>CFBundleExecutable</key>
+	<string>MacSpeechTranscriber</string>
+	<key>CFBundleName</key>
+	<string>Meeting Monitor Speech Transcriber</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Meeting Monitor uses speech recognition to turn saved meeting audio into a transcript after you stop recording.</string>
+</dict>
+</plist>

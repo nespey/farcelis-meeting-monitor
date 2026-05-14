@@ -1,0 +1,11 @@
+.env
+.env.*
+.git/
+.vercel/
+data/
+native/*.app/
+native/AudioClipper
+native/CalendarReader
+native/MacSpeechTranscriber
+native/SystemAudioRecorder
+vendor/
